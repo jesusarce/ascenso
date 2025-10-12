@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\PersonaSituacions\Tables;
+namespace App\Filament\Resources\Personas\Tables;
 
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
@@ -12,7 +12,7 @@ use Filament\Tables\Filters\Filter;
 use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Table;
 
-class PersonaSituacionsTable {
+class PersonasTable {
 
     public static function configure(Table $table): Table {
         return $table
@@ -34,13 +34,6 @@ class PersonaSituacionsTable {
                     ->sortable()
                     ->toggleable()
                     ->placeholder('Sin fecha'),
-                // Tables\Columns\TextColumn::make('pers_fecha_nacimiento')->sortable()->label('Edad')->wrap()->toggleable()->alignCenter()
-                //     ->getStateUsing(function ($record) {
-                //         return $record->pers_fecha_nacimiento 
-                //             ? \Carbon\Carbon::parse($record->pers_fecha_nacimiento)->age . ' años'
-                //             : 'N/A';
-                //     })
-                //     ->sortable(false),
                 TextColumn::make('pers_ci')->sortable()->searchable(isIndividual: true)->label('CI')->alignCenter()->toggleable(),
                 TextColumn::make('pers_ci_complemento')->sortable()->searchable(isIndividual: true)->label('Complemento')->toggleable()->alignCenter(),
                 TextColumn::make('pers_expedido')->sortable()->searchable(isIndividual: true)->label('Expedido')->toggleable(isToggledHiddenByDefault:true)->alignCenter(),

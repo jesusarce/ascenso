@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Filament\Resources\PersonaSituacions;
+namespace App\Filament\Resources\Personas;
 
-use App\Filament\Resources\PersonaSituacions\Pages\CreatePersonaSituacion;
-use App\Filament\Resources\PersonaSituacions\Pages\EditPersonaSituacion;
-use App\Filament\Resources\PersonaSituacions\Pages\ListPersonaSituacions;
-use App\Filament\Resources\PersonaSituacions\Schemas\PersonaSituacionForm;
-use App\Filament\Resources\PersonaSituacions\Tables\PersonaSituacionsTable;
-use App\Models\PersonaSituacion;
+use App\Filament\Resources\Personas\Pages\CreatePersona;
+use App\Filament\Resources\Personas\Pages\EditPersona;
+use App\Filament\Resources\Personas\Pages\ListPersonas;
+use App\Filament\Resources\Personas\Schemas\PersonaForm;
+use App\Filament\Resources\Personas\Tables\PersonasTable;
+use App\Models\Persona;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
@@ -16,9 +16,9 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class PersonaSituacionResource extends Resource {
+class PersonaResource extends Resource {
 
-    protected static ?string $model = PersonaSituacion::class;
+    protected static ?string $model = Persona::class;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedUser;
 
@@ -29,11 +29,11 @@ class PersonaSituacionResource extends Resource {
     protected static ?string $pluralModelLabel = 'Situaciones de Persona';
 
     public static function form(Schema $schema): Schema {
-        return PersonaSituacionForm::configure($schema);
+        return PersonaForm::configure($schema);
     }
 
     public static function table(Table $table): Table {
-        return PersonaSituacionsTable::configure($table);
+        return PersonasTable::configure($table);
     }
 
     public static function getRelations(): array
@@ -46,9 +46,9 @@ class PersonaSituacionResource extends Resource {
     public static function getPages(): array
     {
         return [
-            'index' => ListPersonaSituacions::route('/'),
-            'create' => CreatePersonaSituacion::route('/create'),
-            'edit' => EditPersonaSituacion::route('/{record}/edit'),
+            'index' => ListPersonas::route('/'),
+            'create' => CreatePersona::route('/create'),
+            'edit' => EditPersona::route('/{record}/edit'),
         ];
     }
 

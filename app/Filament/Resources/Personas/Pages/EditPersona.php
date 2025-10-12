@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Filament\Resources\PersonaSituacions\Pages;
+namespace App\Filament\Resources\Personas\Pages;
 
-use App\Filament\Resources\PersonaSituacions\PersonaSituacionResource;
+use App\Filament\Resources\Personas\PersonaResource;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\ForceDeleteAction;
 use Filament\Actions\RestoreAction;
 use Filament\Resources\Pages\EditRecord;
 
-class EditPersonaSituacion extends EditRecord
+class EditPersona extends EditRecord
 {
-    protected static string $resource = PersonaSituacionResource::class;
+    protected static string $resource = PersonaResource::class;
 
     protected function getHeaderActions(): array
     {

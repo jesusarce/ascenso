@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\PersonaSituacions\Schemas;
+namespace App\Filament\Resources\Personas\Schemas;
 
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;
@@ -8,7 +8,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 
-class PersonaSituacionForm {
+class PersonaForm {
 
     public static function configure(Schema $schema): Schema {
         return $schema
