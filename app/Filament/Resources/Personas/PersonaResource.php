@@ -5,8 +5,15 @@ namespace App\Filament\Resources\Personas;
 use App\Filament\Resources\Personas\Pages\CreatePersona;
 use App\Filament\Resources\Personas\Pages\EditPersona;
 use App\Filament\Resources\Personas\Pages\ListPersonas;
+use App\Filament\Resources\Personas\RelationManagers\CargoDestinosRelationManager;
+use App\Filament\Resources\Personas\RelationManagers\DisciplinaDemeritosRelationManager;
+use App\Filament\Resources\Personas\RelationManagers\FelicitacionesRelationManager;
+use App\Filament\Resources\Personas\RelationManagers\FojaConceptosRelationManager;
+use App\Filament\Resources\Personas\RelationManagers\InstitutoMilitaresRelationManager;
+use App\Filament\Resources\Personas\RelationManagers\ProfesionLibresRelationManager;
 use App\Filament\Resources\Personas\Schemas\PersonaForm;
 use App\Filament\Resources\Personas\Tables\PersonasTable;
+use App\Models\DisciplinaDemerito;
 use App\Models\Persona;
 use BackedEnum;
 use Filament\Resources\Resource;
@@ -24,9 +31,11 @@ class PersonaResource extends Resource {
 
     protected static ?string $recordTitleAttribute = 'Persona';
 
-    protected static ?string $navigationLabel = 'Situaciones de Persona';
+    protected static ?string $navigationLabel = 'Personas';
     
-    protected static ?string $pluralModelLabel = 'Situaciones de Persona';
+    protected static ?string $pluralModelLabel = 'Situaciones de Persona';    
+
+    protected static string|\UnitEnum|null $navigationGroup = 'Ascensos';
 
     public static function form(Schema $schema): Schema {
         return PersonaForm::configure($schema);
@@ -36,15 +45,18 @@ class PersonaResource extends Resource {
         return PersonasTable::configure($table);
     }
 
-    public static function getRelations(): array
-    {
+    public static function getRelations(): array {
         return [
-            //
+            CargoDestinosRelationManager::class,
+            DisciplinaDemeritosRelationManager::class,
+            FelicitacionesRelationManager::class,
+            InstitutoMilitaresRelationManager::class,
+            ProfesionLibresRelationManager::class,
+            FojaConceptosRelationManager::class,
         ];
     }
 
-    public static function getPages(): array
-    {
+    public static function getPages(): array {
         return [
             'index' => ListPersonas::route('/'),
             'create' => CreatePersona::route('/create'),
@@ -52,8 +64,7 @@ class PersonaResource extends Resource {
         ];
     }
 
-    public static function getRecordRouteBindingEloquentQuery(): Builder
-    {
+    public static function getRecordRouteBindingEloquentQuery(): Builder {
         return parent::getRecordRouteBindingEloquentQuery()
             ->withoutGlobalScopes([
                 SoftDeletingScope::class,

@@ -38,7 +38,10 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $puntos Puntos
  * @property-read Persona $persona Relación con Persona
  */
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 class DisciplinaDemerito extends Model {
+    use SoftDeletes;
     /**
      * Nombre de la tabla asociada al modelo.
      *

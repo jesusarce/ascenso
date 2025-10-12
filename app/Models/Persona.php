@@ -152,7 +152,7 @@ class Persona extends Model {
     ];
 
     /**
-     * Relación: Una persona tiene muchos CargoDestino.
+     * Relación: Una persona tiene muchos CargoDestinos.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -161,30 +161,48 @@ class Persona extends Model {
     }
 
     /**
-     * Relación: Una persona tiene muchos DisciplinaDemerito.
+     * Relación: Una persona tiene muchos DisciplinaDemeritos.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function disciplinaDemerito() {
+    public function disciplinaDemeritos() {
         return $this->hasMany(DisciplinaDemerito::class);
     }
 
     /**
-     * Relación: Una persona pertenece a un InstitutoMilitar.
+     * Relación: Una persona tiene muchas Felicitaciones.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function institutoMilitar() {
-        return $this->belongsTo(InstitutoMilitar::class);
+    public function felicitaciones() {
+        return $this->hasMany(Felicitacion::class);
     }
 
     /**
-     * Relación: Una persona pertenece a una ProfesionLibre.
+     * Relación: Una persona tiene muchos InstitutoMilitares.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function profesionLibre() {
-        return $this->belongsTo(ProfesionLibre::class);
+    public function institutoMilitares() {
+        return $this->hasMany(InstitutoMilitar::class);
+    }
+
+    /**
+     * Relación: Una persona tiene muchas ProfesionLibre.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function profesionLibres() {
+        return $this->hasMany(ProfesionLibre::class);
+    }
+
+    /**
+     * Relación: Una persona tiene muchas FojasConceptos.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function fojaConceptos() {
+        return $this->hasMany(ProfesionLibre::class);
     }
 
     /**

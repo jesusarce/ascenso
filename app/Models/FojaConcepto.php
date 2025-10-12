@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Modelo FojaConcepto
@@ -32,7 +32,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read Persona $persona Relación con Persona
  */
 class FojaConcepto extends Model {
-    
+
+    use SoftDeletes;
+
     /**
      * Nombre de la tabla asociada al modelo.
      *

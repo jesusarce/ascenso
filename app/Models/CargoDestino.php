@@ -28,7 +28,10 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read TipoCargo $tipoCargo Relación con TipoCargo
  * @property-read Persona $persona Relación con Persona
  */
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 class CargoDestino extends Model {
+    use SoftDeletes;
     /**
      * Nombre de la tabla asociada al modelo.
      *

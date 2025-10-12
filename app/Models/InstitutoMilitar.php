@@ -40,7 +40,10 @@ use Illuminate\Database\Eloquent\Model;
  * @property float $promedio Promedio
  * @property-read Persona[] $personas Relación con Persona
  */
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 class InstitutoMilitar extends Model {
+    use SoftDeletes;
     /**
      * Nombre de la tabla asociada al modelo.
      *

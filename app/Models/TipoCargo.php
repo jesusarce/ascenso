@@ -12,8 +12,10 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $tcar_descripcion Descripción del tipo de cargo
  * @property-read \Illuminate\Database\Eloquent\Collection|CargoDestino[] $cargoDestinos Relación con CargoDestino
  */
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 class TipoCargo extends Model {
-    
+    use SoftDeletes;
     /**
      * Nombre de la tabla asociada al modelo.
      *
