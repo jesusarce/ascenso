@@ -213,4 +213,13 @@ class Persona extends Model {
     public function tipoCargo() {
         return $this->belongsTo(TipoCargo::class);
     }
+
+        /**
+     * Relación: Una persona pertenece a un TipoCargo.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function personaAscensos() {
+        return $this->hasMany(PersonaAscenso::class);
+    }
 }

@@ -27,7 +27,7 @@ class PersonaResource extends Resource {
 
     protected static ?string $model = Persona::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedUser;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedUserGroup;
 
     protected static ?string $recordTitleAttribute = 'Persona';
 
@@ -36,6 +36,12 @@ class PersonaResource extends Resource {
     protected static ?string $pluralModelLabel = 'Situaciones de Persona';    
 
     protected static string|\UnitEnum|null $navigationGroup = 'Ascensos';
+
+    protected static ?int $navigationSort = 1;
+
+    public static function getNavigationBadge(): ?string {
+        return static::getModel()::count();
+    }
 
     public static function form(Schema $schema): Schema {
         return PersonaForm::configure($schema);
