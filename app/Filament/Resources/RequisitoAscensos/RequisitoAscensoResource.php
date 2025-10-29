@@ -29,7 +29,11 @@ class RequisitoAscensoResource extends Resource {
     protected static ?string $pluralModelLabel = 'Requisitos de Ascenso';
     protected static ?int $navigationSort = 1;
     protected static string|\UnitEnum|null $navigationGroup = 'Parametros de Ascenso';
-    protected static ?string $navigationBadgeTooltip = 'Numero de requisitos para ascenso.';
+    /**
+     * Must match the type declared in Filament\Resources\Resource
+     * (Illuminate\Contracts\Support\Htmlable|string|null).
+     */
+    protected static \Illuminate\Contracts\Support\Htmlable|string|null $navigationBadgeTooltip = 'Numero de requisitos para ascenso.';
 
     public static function getNavigationBadge(): ?string {
         return static::getModel()::count();

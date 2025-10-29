@@ -28,7 +28,11 @@ class UnidadHistoricoResource extends Resource {
     protected static ?string $pluralModelLabel = 'Unidad Historicos';
     protected static ?int $navigationSort = 2;
     protected static string|\UnitEnum|null $navigationGroup = 'Parametros de Ascenso';
-    protected static ?string $navigationBadgeTooltip = 'Numero de Unidades';
+    /**
+     * Must match the type declared in Filament\Resources\Resource
+     * (Illuminate\Contracts\Support\Htmlable|string|null).
+     */
+    protected static \Illuminate\Contracts\Support\Htmlable|string|null $navigationBadgeTooltip = 'Numero de Unidades';
     public static function getNavigationBadge(): ?string {
         return static::getModel()::count();
     }
