@@ -49,7 +49,7 @@ class PersonaAscensosTable {
                     TextColumn::make('requisitoDocumentoDetalle.rasc_ascenso_descripcion')->label('Postulacion')
                         ->toggleable(true)->searchable(isIndividual: true)
                         ->sortable(),
-                    TextColumn::make('pasc_promocion')->toggleable(true)->searchable(isIndividual: true)->sortable()->label('Promocio')
+                    TextColumn::make('pasc_nota_ascenso')->toggleable(true)->searchable(isIndividual: true)->sortable()->label('Nota de Ascenso')->alignCenter(),
 
                 ])
             ->filters([

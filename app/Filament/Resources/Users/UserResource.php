@@ -13,6 +13,7 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use App\Filament\Resources\Users\RelationManagers\RolesRelationManager;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
@@ -35,25 +36,21 @@ class UserResource extends Resource {
         return static::getModel()::count();
     }
 
-    public static function form(Schema $schema): Schema
-    {
+    public static function form(Schema $schema): Schema {
         return UserForm::configure($schema);
     }
 
-    public static function table(Table $table): Table
-    {
+    public static function table(Table $table): Table {
         return UsersTable::configure($table);
     }
 
-    public static function getRelations(): array
-    {
+    public static function getRelations(): array {
         return [
-            //
+            RolesRelationManager::class,
         ];
     }
 
-    public static function getPages(): array
-    {
+    public static function getPages(): array {
         return [
             'index' => ListUsers::route('/'),
             'create' => CreateUser::route('/create'),
@@ -61,8 +58,7 @@ class UserResource extends Resource {
         ];
     }
 
-    public static function getRecordRouteBindingEloquentQuery(): Builder
-    {
+    public static function getRecordRouteBindingEloquentQuery(): Builder {
         return parent::getRecordRouteBindingEloquentQuery()
             ->withoutGlobalScopes([
                 SoftDeletingScope::class,

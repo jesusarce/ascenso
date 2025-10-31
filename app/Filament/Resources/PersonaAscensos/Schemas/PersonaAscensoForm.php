@@ -48,6 +48,14 @@ class PersonaAscensoForm {
                         TextInput::make('convocatoria_estado_id')->label('Estado:')->required(),
                         TextInput::make('pasc_promocion')->label('Promoción de Egreso')->type('integer')->required(),
                         TextInput::make('pasc_antiguedad')->label('Antigüedad')->required(),
+                        FileUpload::make('archivo_nombre')
+                        ->label('Nombre del Archivo')
+                        ->disk('sftp')
+                        ->directory('data')
+                        ->visibility('private')
+                        ->acceptedFileTypes(['application/pdf', 'image/jpeg', 'image/jpg']),
+                        TextInput::make('requisito_documento_detalle_id')->label('Requisito Documento Detalle ID'),
+                        TextInput::make('pasc_nota_ascenso')->label('Nota de Ascenso')->type('decimal', 2)->maxValue(100)->minValue(0),
                         MarkdownEditor::make('observacion')
                             ->toolbarButtons([
                                 ['bold', 'italic', 'strike', 'link'],
@@ -56,13 +64,6 @@ class PersonaAscensoForm {
                                 ['table'],
                                 ['undo', 'redo'],
                             ])->label('Observación')->columnSpanFull(),
-                        FileUpload::make('archivo_nombre')
-                            ->label('Nombre del Archivo')
-                            ->disk('sftp')
-                            ->directory('data')
-                            ->visibility('private')
-                            ->acceptedFileTypes(['application/pdf', 'image/jpeg', 'image/jpg']),
-                        TextInput::make('requisito_documento_detalle_id')->label('Requisito Documento Detalle ID'),
                     ])->columnSpan(4),
                 Section::make('Datos Adicionales')
                     ->schema([
@@ -74,7 +75,8 @@ class PersonaAscensoForm {
                                 ($get('persona')?->apellido_materno ?? '') . ' | CI: ' .
                                 ($get('persona')?->ci ?? 'No disponible')
                             )),
-                    ])->columnSpan(2)
+                    ])->columnSpan(2),
+
             ])->columns(6);
     }
 }

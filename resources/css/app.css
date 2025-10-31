@@ -9,3 +9,25 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+
+/* Filament: alternate row colors (striped rows)
+     Applies both to table layout and the content (div) layout used by Filament tables.
+     "Plomo" = light gray, and white for the alternating rows.
+*/
+
+.fi-ta-table tbody tr.fi-ta-row:nth-child(odd) {
+    background-color: #f3f4f6; /* Tailwind gray-100 */
+}
+
+.fi-ta-table tbody tr.fi-ta-row:nth-child(even) {
+    background-color: #ffffff; /* white */
+}
+
+/* Content layout (the non-table variant that uses divs) */
+.fi-ta-content > .fi-ta-record:nth-child(odd) {
+    background-color: #f3f4f6;
+}
+
+.fi-ta-content > .fi-ta-record:nth-child(even) {
+    background-color: #ffffff;
+}

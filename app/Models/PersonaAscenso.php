@@ -51,6 +51,7 @@ class PersonaAscenso extends Model {
         'observacion',
         'archivo_nombre',
         'requisito_documento_detalle_id',
+        'pasc_nota_ascenso',
     ];
 
     /**

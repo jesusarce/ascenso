@@ -26,7 +26,7 @@ class UserForm {
                     // sólo enviar al modelo si se ingresó algo
                     ->dehydrated(fn ($state) => filled($state))
                     // hashear antes de guardar (si tu modelo NO tiene mutator setPasswordAttribute)
-                    ->dehydrateStateUsing(fn ($state) => Hash::make($state))
+                    ->dehydrateStateUsing(fn ($state) => Hash::make($state)),
                 ]);
     }
 }
