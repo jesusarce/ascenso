@@ -17,12 +17,23 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class AscensoParametroResource extends Resource {
-    
+
     protected static ?string $model = AscensoParametro::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedEquals;
 
-    protected static ?string $recordTitleAttribute = 'AscencoParametro';
+    protected static ?string $recordTitleAttribute = 'Detalle de Ascenso';
+
+    protected static ?string $navigationLabel = 'Detalle de Ascenso';
+    protected static ?string $pluralModelLabel = 'Detalle de Ascenso';
+    protected static ?int $navigationSort = 3;
+    protected static string|\UnitEnum|null $navigationGroup = 'Parametros de Ascenso';
+
+    protected static \Illuminate\Contracts\Support\Htmlable|string|null $navigationBadgeTooltip = 'Numero de requisitos para ascenso.';
+
+    public static function getNavigationBadge(): ?string {
+        return static::getModel()::count();
+    }
 
     public static function form(Schema $schema): Schema
     {
